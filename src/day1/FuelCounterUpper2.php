@@ -1,6 +1,6 @@
 <?php
 
-namespace PuzzleSolvers\Puzzle1;
+namespace PuzzleSolvers\Day1;
 
 use PuzzleSolvers\PuzzleSolver;
 
