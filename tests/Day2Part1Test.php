@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use PuzzleSolvers\Day2\ElfComputer;
 
-final class Puzzle1Part2Test extends TestCase
+final class Day2Part1Test extends TestCase
 {
     public function testInputs(): void
     {
