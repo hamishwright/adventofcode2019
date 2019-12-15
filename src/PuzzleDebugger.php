@@ -2,7 +2,7 @@
 
 class PuzzleDebugger
 {
-    public static function echo($message)
+    public static function print($message)
     {
         if (is_array($message)) {
             $message = print_r($message, true);

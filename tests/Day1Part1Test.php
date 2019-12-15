@@ -9,7 +9,6 @@ final class Day1Part1Test extends TestCase
     {
         $outputs = [2, 2, 654, 33583, (2 + 2 + 654 + 33583)];
         foreach ($outputs as $inputFileNumber => $output) {
-            \PuzzleDebugger::echo('TESTING' . $inputFileNumber);
             $puzzleSolver = new FuelCounterUpper('day1/part1/' . $inputFileNumber . '.txt');
             $puzzleSolver->run();
             $this->assertSame($output, $puzzleSolver->getOutput());
