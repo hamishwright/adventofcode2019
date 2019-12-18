@@ -23,8 +23,6 @@ final class Day3Part2Test extends TestCase
         $crossedWiresMeasurer2 = new CrossedWiresMeasurer2($inputFile);
         $crossedWiresMeasurer2->initialise();
 
-        \PuzzleDebugger::print($crossedWiresMeasurer2->wires[0]);
-
         $this->assertSame(1, $crossedWiresMeasurer2->wires[0]['0,1']['length']);
     }
 }
