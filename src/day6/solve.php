@@ -10,3 +10,11 @@ $orbitMapper->run();
 $output = $orbitMapper->getOutput();
 
 echo "Day 5 Part 1 answer: " . $output . "\n";
+
+$orbitMapper = new OrbitMapper('day6/part1/input');
+$orbitMapper->initialise();
+$santasLocation = $orbitMapper->objects['SAN']['parent'];
+$yourLocation = $orbitMapper->objects['YOU']['parent'];
+$output = $orbitMapper->getDistanceBetweenPoints($yourLocation, $santasLocation);
+
+echo "Day 5 Part 2 answer: " . $output . "\n";

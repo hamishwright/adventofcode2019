@@ -35,4 +35,31 @@ final class Day6Part1Test extends TestCase
 
         $this->assertSame($expectedOutput, $orbitMapper->objects);
     }
+
+    public function testGetParents()
+    {
+        $orbitMapper = new OrbitMapper('day6/part1/0');
+        $orbitMapper->initialise();
+        $expectedOutput = ['J', 'E', 'D', 'C', 'B', 'COM'];
+
+        $this->assertSame($expectedOutput, $orbitMapper->getParentObjects('K'));
+    }
+
+    public function testCommonObjectBetweenPoints()
+    {
+        $orbitMapper = new OrbitMapper('day6/part1/0');
+        $orbitMapper->initialise();
+
+        $this->assertSame('D', $orbitMapper->getCommonObjectBetweenPoints('J', 'I'));
+        $this->assertSame('B', $orbitMapper->getCommonObjectBetweenPoints('H', 'L'));
+    }
+
+    public function testGetDistanceBetweenTwoPoints()
+    {
+        $orbitMapper = new OrbitMapper('day6/part1/0');
+        $orbitMapper->initialise();
+
+        $this->assertSame(3, $orbitMapper->getDistanceBetweenPoints('J', 'I'));
+        $this->assertSame(8, $orbitMapper->getDistanceBetweenPoints('H', 'L'));
+    }
 }
