@@ -10,6 +10,7 @@ class PuzzleSolver
 
     public function __construct(string $filename)
     {
+        $this->filename = $filename;
         $this->filepath = 'inputs/' . $filename;
         $this->inputs = $this->readInputsFromFile();
     }

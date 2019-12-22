@@ -8,22 +8,26 @@ class ElfComputer4 extends PuzzleSolver
 {
     public $program;
     public $position;
-    public $input;
     public $outputs;
-    public $inputSequence;
+    public $input;
     public $parameterMode;
     public $instructionLength = 4;
+    public $haltSignal;
 
     public function initialise()
     {
         $this->position = 0;
+        $this->haltSignal = false;
         $this->program = array_map('intval', explode(',', $this->inputs[0]));
         $this->outputs = [];
+        $this->input = null;
     }
 
     public function run()
     {
-        while ($this->position < $this->getProgramSize()) {
+        $this->haltSignal = false;
+        $this->outputs = [];
+        while ($this->position < $this->getProgramSize() && $this->haltSignal == false) {
             $instruction = $this->parseInstruction($this->readMemory());
             $this->execute($instruction);
         }
@@ -52,11 +56,6 @@ class ElfComputer4 extends PuzzleSolver
         return $parameter;
     }
 
-    public function getNextInput()
-    {
-        return array_pop($this->inputSequence);
-    }
-
     public function execute($instruction)
     {
         $opcode = $instruction['opcode'];
@@ -80,7 +79,13 @@ class ElfComputer4 extends PuzzleSolver
         }
 
         else if ($opcode == 3) {
-            $this->writeMemory($this->getNextInput(), $this->readMemoryOffset(1));
+            if (is_null($this->input)) {
+                $this->haltSignal = true;
+
+                return;
+            }
+            $this->writeMemory($this->input, $this->readMemoryOffset(1));
+            $this->input = null;
             $this->position += 2;
         }
 
@@ -129,7 +134,7 @@ class ElfComputer4 extends PuzzleSolver
         }
 
         else if ($opcode === 99) {
-            $this->position = $this->getProgramSize();
+            $this->haltSignal = true;
         } else {
             $this->position += 1;
         }

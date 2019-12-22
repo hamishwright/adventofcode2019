@@ -35,7 +35,9 @@ class AmplifierToEleven extends PuzzleSolver
                             foreach ($phaseSequence as $phase) {
                                 $elfComputer4 = new ElfComputer4('day7/part1/input');
                                 $elfComputer4->initialise();
-                                $elfComputer4->inputSequence = [$input, $phase];
+                                $elfComputer4->input = $phase;
+                                $elfComputer4->run();
+                                $elfComputer4->input = $input;
                                 $elfComputer4->run();
                                 $input = $elfComputer4->outputs[0];
                             }
