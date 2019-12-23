@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use PuzzleSolvers\Day5\ElfComputer3;
+use PuzzleSolvers\PuzzleDebugger;
 
 final class Day5Part2Test extends TestCase
 {
@@ -86,7 +87,7 @@ final class Day5Part2Test extends TestCase
             9,
         ];
         foreach ($outputs as $inputFileNumber => $output) {
-            \PuzzleDebugger::print('TESTING FILE: ' . $inputFileNumber);
+            PuzzleDebugger::print('TESTING FILE: ' . $inputFileNumber);
             $elfComputer = new ElfComputer3('day5/part2/' . $inputFileNumber);
             $elfComputer->initialise();
             $elfComputer->input = $inputs[$inputFileNumber];

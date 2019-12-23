@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use PuzzleSolvers\Day4\PasswordCracker;
+use PuzzleSolvers\PuzzleDebugger;
 
 final class Day4Part1Test extends TestCase
 {
@@ -10,7 +11,7 @@ final class Day4Part1Test extends TestCase
         $outputs = [1, 0, 0];
         foreach ($outputs as $inputFileNumber => $output) {
             $inputFile = 'day4/part1/' . $inputFileNumber;
-            \PuzzleDebugger::print('TESTING INPUT FILE ' . $inputFile);
+            PuzzleDebugger::print('TESTING INPUT FILE ' . $inputFile);
             $puzzleSolver = new PasswordCracker($inputFile);
             $puzzleSolver->run();
             $this->assertSame($output, $puzzleSolver->getOutput());

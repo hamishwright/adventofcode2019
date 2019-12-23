@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use PuzzleSolvers\Day3\CrossedWiresMeasurer;
+use PuzzleSolvers\PuzzleDebugger;
 
 final class Day3Part1Test extends TestCase
 {
@@ -10,7 +11,7 @@ final class Day3Part1Test extends TestCase
         $outputs = [6, 159, 135];
         foreach ($outputs as $inputFileNumber => $output) {
             $inputFile = 'day3/part1/' . $inputFileNumber;
-            \PuzzleDebugger::print('TESTING INPUT FILE ' . $inputFile);
+            PuzzleDebugger::print('TESTING INPUT FILE ' . $inputFile);
             $puzzleSolver = new CrossedWiresMeasurer($inputFile);
             $puzzleSolver->run();
             $this->assertSame($output, $puzzleSolver->getOutput());

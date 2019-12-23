@@ -1,5 +1,7 @@
 <?php
 
+namespace PuzzleSolvers;
+
 class PuzzleDebugger
 {
     public static function print($message)
